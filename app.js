@@ -2,6 +2,7 @@ import express from "express";
 const app = express();
 export default app;
 
+// Handle common Postgres errors
 app.use((err, req, res, next) => {
   switch (err.code) {
     // Invalid type
@@ -17,6 +18,7 @@ app.use((err, req, res, next) => {
   }
 });
 
+//final catch-all error handling
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(500).send("Sorry! Something went wrong.");
