@@ -1,6 +1,15 @@
 import express from "express";
 const app = express();
 export default app;
+import usersRouter from "./routes/users.js";
+import tasksRouter from "./routes/tasks.js";
+import getUserFromToken from "./middleware/getUserFromToken.js"; //.js"
+
+app.use(express.json());
+app.use(getUserFromToken);
+
+app.use("/users", usersRouter);
+app.use("/tasks", tasksRouter);
 
 // Handle common Postgres errors
 app.use((err, req, res, next) => {

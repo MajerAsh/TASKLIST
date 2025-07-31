@@ -5,7 +5,6 @@ import { createUser, getUserByUsername } from "#db/queries/users";
 import requireBody from "#middleware/requireBody";
 
 const router = express.Router();
-export default router;
 
 router.post(
   "/register",
@@ -40,3 +39,5 @@ router.post(
     res.send(token);
   }
 );
+
+export default router;

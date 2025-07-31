@@ -1,20 +1,14 @@
-import express from "express";
+//import express from "express"; this previously heled npm run dev but yolo
 import app from "#app";
 import db from "#db/client";
 
-import usersRouter from "./routes/users.js";
-import tasksRouter from "./routes/tasks.js";
-import getUserFromToken from "./middleware/getUserFromToken.js"; //.js"
+//put all middleware into app.js: import routes/users, routes/tracks and mdl/getUseFromToken
 
 const PORT = process.env.PORT ?? 3000; // changed || to ?? per jukebox_pro answr
 
 await db.connect();
 
-app.use(express.json());
-app.use(getUserFromToken);
-
-app.use("/users", usersRouter);
-app.use("/tasks", tasksRouter);
+//moved all app.use to app.js
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}...`);
